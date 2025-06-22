@@ -1,0 +1,56 @@
+<Window
+    Height="400"
+    RequestedThemeVariant="Dark"
+    Title="TaskWindow"
+    Width="400"
+    d:DesignHeight="450"
+    d:DesignWidth="500"
+    mc:Ignorable="d"
+    x:Class="PracticeAvalonia.Views.TaskWindow"
+    x:DataType="vm:TaskViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:PracticeAvalonia.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.DataContext>
+        <vm:TaskViewModel />
+    </Design.DataContext>
+
+    <Grid RowDefinitions="Auto, *, Auto">
+        <StackPanel Margin="10" Orientation="Horizontal">
+            <TextBox
+                Text="{Binding TaskName}"
+                Watermark="enter a task"
+                Width="300" />
+            <Button
+                Command="{Binding AddTaskCommand}"
+                Content="Add Task"
+                Margin="10,0,0,0" />
+        </StackPanel>
+
+        <ListBox Grid.Row="1" ItemsSource="{Binding Tasks}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="*, Auto">
+                        <TextBlock Text="{Binding}" VerticalAlignment="Center" />
+                        <Button
+                            Command="{Binding $parent[ListBox].((vm:TaskViewModel)DataContext).DeleteTaskCommand}"
+                            CommandParameter="{Binding}"
+                            Content="Delete"
+                            Grid.Column="1" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button
+            Command="{Binding ClearTasksCommand}"
+            Content="Clear"
+            Grid.Row="2"
+            Margin="10" />
+
+    </Grid>
+
+</Window>
