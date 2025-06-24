@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -10,35 +11,26 @@ namespace PracticeAvalonia.ViewModels;
 
 public partial class ContactManagerViewModel : ViewModelBase
 {
-    [ObservableProperty]
-    private ObservableCollection<Contact> _contacts = new();
+    [ObservableProperty] private string _newName = string.Empty;
+    [ObservableProperty] private string _newEmail = string.Empty;
+    [ObservableProperty] private string _newPhone = string.Empty;
+
+    [ObservableProperty] private ObservableCollection<Contact> _contacts = new();
     
-    [ObservableProperty]
-    private Contact? _selectedContact;
-    
-    [ObservableProperty]
-    private string _searchText = string.Empty;
-    
-    [ObservableProperty]
-    private string _newName = string.Empty;
-    
-    [ObservableProperty]
-    private string _newEmail = string.Empty;
-    
-    [ObservableProperty]
-    private string _newPhone = string.Empty;
-    
-    public IEnumerable<Contact> FilteredContacts => 
+    [ObservableProperty] private Contact? _selectedContact;
+    [ObservableProperty] private string _searchText = string.Empty;
+
+    public IEnumerable<Contact> FilteredContacts =>
         string.IsNullOrWhiteSpace(SearchText)
             ? Contacts
             : Contacts.Where(c => c.Name.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
 
     public ContactManagerViewModel()
     {
-        LoadSampleData();
+        SampleData();
     }
 
-    private void LoadSampleData()
+    private void SampleData()
     {
         Contacts.Add(new Contact { Name = "John Doe", Email = "john.doe@email.com", Phone = "555-0123" });
         Contacts.Add(new Contact { Name = "Jane Smith", Email = "jane.smith@email.com", Phone = "555-0456" });
@@ -47,60 +39,59 @@ public partial class ContactManagerViewModel : ViewModelBase
         Contacts.Add(new Contact { Name = "Charlie Wilson", Email = "charlie.wilson@email.com", Phone = "555-0654" });
     }
 
-    [RelayCommand(CanExecute = nameof(CanAddContact))]
-    private void AddContact()
-    {
-        Contacts.Add(new Contact
-        {
-            Name = NewName.Trim(),
-            Email = NewEmail.Trim(),
-            Phone = NewPhone.Trim()
-        });
-        Clearform();
-    }
-
-    [RelayCommand]
-    private void Clearform()
-    {
-        NewName = NewEmail = NewPhone = string.Empty;
-    }
-
-    [RelayCommand]
-    private void ClearSearch()
-    {
-        SearchText = string.Empty;
-    }
-
-    [RelayCommand]
-    private void DeleteContact(Contact contact)
-    {
-        if (SelectedContact == contact)
-        {
-            SelectedContact = null;
-        }
-        
-        Contacts.Remove(contact);
-    }
-
     partial void OnSearchTextChanged(string value)
     {
         OnPropertyChanged(nameof(FilteredContacts));
     }
 
-    private bool CanAddContact() =>
-        !string.IsNullOrWhiteSpace(NewName) &&
-        !string.IsNullOrWhiteSpace(NewEmail) &&
-        IsValidEmail(NewEmail);
-    
-    partial void OnNewNameChanged(string value) => AddContactCommand.NotifyCanExecuteChanged();
-    partial void OnNewEmailChanged(string value) => AddContactCommand.NotifyCanExecuteChanged();
+    partial void OnNewNameChanged(string value)
+    {
+        AddContactCommand.NotifyCanExecuteChanged();
+    }
 
-    private static bool IsValidEmail(string email)
+    partial void OnNewPhoneChanged(string value)
+    {
+        AddContactCommand.NotifyCanExecuteChanged();
+    }
+
+    partial void OnNewEmailChanged(string value)
+    {
+        AddContactCommand.NotifyCanExecuteChanged();
+    }
+
+    [RelayCommand]
+    private void DeleteContact(Contact contact)
+    {
+        Contacts.Remove(contact);
+        if(SelectedContact == contact) SelectedContact = null;
+    }
+
+    [RelayCommand(CanExecute = nameof(CanAddContact))]
+    private void AddContact()
+    {
+        var newContact = new Contact
+        {
+            Name = NewName.Trim(),
+            Email = NewEmail.Trim(),
+            Phone = NewPhone.Trim()
+        };
+        Contacts.Add(newContact);
+        NewName = NewEmail = NewPhone = string.Empty;
+    }
+
+    private bool CanAddContact()
+    {
+        return !string.IsNullOrWhiteSpace(NewName) &&
+               !string.IsNullOrWhiteSpace(NewPhone) &&
+               IsValidEmail(NewEmail);
+    }
+
+    private bool IsValidEmail(string newEmail)
     {
         try
         {
-            var addr = new System.Net.Mail.MailAddress(email);
-            return addr.Address == email;
+            var email = new System.Net.Mail.MailAddress(newEmail);
+            return email.Address == newEmail;
         }
         catch
         {

@@ -1,7 +1,7 @@
 <Window
     RequestedThemeVariant="Dark"
     Title="ContactManagerWindow"
-    d:DesignHeight="650"
+    d:DesignHeight="750"
     d:DesignWidth="800"
     mc:Ignorable="d"
     x:Class="PracticeAvalonia.Views.ContactManagerWindow"
@@ -16,35 +16,221 @@
         <vm:ContactManagerViewModel />
     </Design.DataContext>
 
-    <Grid Margin="20" RowDefinitions="Auto, *">
-        <StackPanel Margin="0,0,0,20">
+    <Window.Styles>
+        <!--  Main Background Style  -->
+        <Style Selector="Grid.main-bg">
+            <Setter Property="Background">
+                <LinearGradientBrush EndPoint="100%,100%" StartPoint="0%,0%">
+                    <GradientStop Color="#0F0F1E" Offset="0" />
+                    <GradientStop Color="#1A1A2E" Offset="0.5" />
+                    <GradientStop Color="#16213E" Offset="1" />
+                </LinearGradientBrush>
+            </Setter>
+        </Style>
+
+        <!--  Card Styles  -->
+        <Style Selector="Border.glass-card">
+            <Setter Property="Background">
+                <LinearGradientBrush EndPoint="100%,100%" StartPoint="0%,0%">
+                    <GradientStop Color="#25FFFFFF" Offset="0" />
+                    <GradientStop Color="#15FFFFFF" Offset="1" />
+                </LinearGradientBrush>
+            </Setter>
+            <Setter Property="BorderBrush" Value="#40FFFFFF" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="Effect">
+                <DropShadowEffect
+                    BlurRadius="20"
+                    Color="#30000000"
+                    OffsetY="8" />
+            </Setter>
+        </Style>
+
+        <Style Selector="Border.contact-item">
+            <Setter Property="Background">
+                <LinearGradientBrush EndPoint="100%,100%" StartPoint="0%,0%">
+                    <GradientStop Color="#20FFFFFF" Offset="0" />
+                    <GradientStop Color="#10FFFFFF" Offset="1" />
+                </LinearGradientBrush>
+            </Setter>
+            <Setter Property="BorderBrush" Value="#30FFFFFF" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Margin" Value="0,3" />
+            <Setter Property="Effect">
+                <DropShadowEffect
+                    BlurRadius="8"
+                    Color="#20000000"
+                    OffsetY="3" />
+            </Setter>
+        </Style>
+
+        <!--  Text Styles  -->
+        <Style Selector="TextBlock.title">
+            <Setter Property="Foreground" Value="#F8FAFC" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Effect">
+                <DropShadowEffect BlurRadius="5" Color="#40000000" />
+            </Setter>
+        </Style>
+
+        <Style Selector="TextBlock.primary">
+            <Setter Property="Foreground" Value="#F1F5F9" />
+            <Setter Property="FontWeight" Value="Medium" />
+        </Style>
+
+        <Style Selector="TextBlock.secondary">
+            <Setter Property="Foreground" Value="#94A3B8" />
+        </Style>
+
+        <Style Selector="TextBlock.accent">
+            <Setter Property="Foreground" Value="#38BDF8" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style Selector="TextBlock.success">
+            <Setter Property="Foreground" Value="#10B981" />
+            <Setter Property="FontWeight" Value="Medium" />
+        </Style>
+
+        <!--  Input Styles  -->
+        <Style Selector="TextBox.modern-input">
+            <Setter Property="Background">
+                <LinearGradientBrush EndPoint="100%,100%" StartPoint="0%,0%">
+                    <GradientStop Color="#25374151" Offset="0" />
+                    <GradientStop Color="#35374151" Offset="1" />
+                </LinearGradientBrush>
+            </Setter>
+            <Setter Property="Foreground" Value="#F8FAFC" />
+            <Setter Property="BorderBrush" Value="#6B7280" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Padding" Value="12,10" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+
+        <Style Selector="TextBox.search-input">
+            <Setter Property="Background">
+                <LinearGradientBrush EndPoint="100%,100%" StartPoint="0%,0%">
+                    <GradientStop Color="#25374151" Offset="0" />
+                    <GradientStop Color="#35374151" Offset="1" />
+                </LinearGradientBrush>
+            </Setter>
+            <Setter Property="Foreground" Value="#F8FAFC" />
+            <Setter Property="BorderBrush" Value="#38BDF8" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="CornerRadius" Value="25" />
+            <Setter Property="Padding" Value="20,12" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Effect">
+                <DropShadowEffect BlurRadius="10" Color="#2038BDF8" />
+            </Setter>
+        </Style>
+
+        <!--  Button Styles  -->
+        <Style Selector="Button.primary-btn">
+            <Setter Property="Background">
+                <LinearGradientBrush EndPoint="100%,100%" StartPoint="0%,0%">
+                    <GradientStop Color="#3B82F6" Offset="0" />
+                    <GradientStop Color="#1D4ED8" Offset="1" />
+                </LinearGradientBrush>
+            </Setter>
+            <Setter Property="Foreground" Value="#FFFFFF" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Effect">
+                <DropShadowEffect
+                    BlurRadius="10"
+                    Color="#403B82F6"
+                    OffsetY="3" />
+            </Setter>
+        </Style>
+
+        <Style Selector="Button.primary-btn:pointerover">
+            <Setter Property="Background">
+                <LinearGradientBrush EndPoint="100%,100%" StartPoint="0%,0%">
+                    <GradientStop Color="#2563EB" Offset="0" />
+                    <GradientStop Color="#1E40AF" Offset="1" />
+                </LinearGradientBrush>
+            </Setter>
+        </Style>
+
+        <Style Selector="Button.delete-btn">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Foreground" Value="#EF4444" />
+        </Style>
+
+        <Style Selector="Button.delete-btn:pointerover">
+            <Setter Property="Background" Value="#20EF4444" />
+        </Style>
+
+        <!--  Info Panel Style  -->
+        <Style Selector="Border.info-panel">
+            <Setter Property="Background">
+                <LinearGradientBrush EndPoint="100%,100%" StartPoint="0%,0%">
+                    <GradientStop Color="#2510B981" Offset="0" />
+                    <GradientStop Color="#1510B981" Offset="1" />
+                </LinearGradientBrush>
+            </Setter>
+            <Setter Property="BorderBrush" Value="#3010B981" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="12" />
+        </Style>
+
+        <Style Selector="Border.selected-panel">
+            <Setter Property="Background">
+                <LinearGradientBrush EndPoint="100%,100%" StartPoint="0%,0%">
+                    <GradientStop Color="#2538BDF8" Offset="0" />
+                    <GradientStop Color="#1538BDF8" Offset="1" />
+                </LinearGradientBrush>
+            </Setter>
+            <Setter Property="BorderBrush" Value="#3038BDF8" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="12" />
+        </Style>
+    </Window.Styles>
+
+    <Grid
+        Classes="main-bg"
+        Margin="20"
+        RowDefinitions="Auto, *">
+
+        <!--  Header Section  -->
+        <StackPanel Margin="0,0,0,25">
             <TextBlock
-                FontSize="24"
-                FontWeight="Bold"
+                Classes="title"
+                FontSize="32"
                 HorizontalAlignment="Center"
-                Margin="0,0,0,20"
-                Text="Contact Manager" />
+                Margin="0,0,0,25"
+                Text="👥 Contact Manager" />
             <TextBox
+                Classes="search-input"
                 HorizontalAlignment="Center"
                 Text="{Binding SearchText}"
-                Watermark="Search contacts..."
-                Width="300" />
+                Watermark="🔍 Search contacts..."
+                Width="350" />
         </StackPanel>
 
+        <!--  Main Content  -->
         <Grid ColumnDefinitions="2*, 1.5*" Grid.Row="1">
+
+            <!--  Contacts List Panel  -->
             <Border
-                BorderBrush="Gray"
-                BorderThickness="1"
-                CornerRadius="5"
+                Classes="glass-card"
                 Grid.Column="0"
-                Padding="10">
+                Padding="25">
                 <Grid RowDefinitions="Auto,*">
                     <TextBlock
-                        FontSize="18"
-                        FontWeight="SemiBold"
+                        Classes="title"
+                        FontSize="20"
                         Grid.Row="0"
-                        Margin="0,0,0,10"
-                        Text="Contacts" />
+                        Margin="0,0,0,20"
+                        Text="📋 All Contacts" />
+
                     <ListBox
                         Background="Transparent"
                         Grid.Row="1"
@@ -52,37 +238,36 @@
                         SelectedItem="{Binding SelectedContact}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Border Margin="0,2" Padding="10">
+                                <Border Classes="contact-item" Padding="15">
                                     <Grid ColumnDefinitions="*,Auto">
-                                        <Border
-                                            BorderBrush="LightGray"
-                                            BorderThickness="0,0,0,1"
-                                            Grid.ColumnSpan="2">
-                                            <StackPanel>
-                                                <TextBlock
-                                                    FontSize="14"
-                                                    FontWeight="Bold"
-                                                    Text="{Binding Name}" />
-                                                <TextBlock
-                                                    FontSize="12"
-                                                    Foreground="CornflowerBlue"
-                                                    Text="{Binding Email}" />
-                                                <TextBlock
-                                                    FontSize="12"
-                                                    Foreground="LimeGreen"
-                                                    Text="{Binding Phone}" />
-                                            </StackPanel>
-                                        </Border>
-                                        <Grid Grid.Column="1" VerticalAlignment="Top">
-                                            <Button
-                                                Background="Transparent"
-                                                BorderThickness="0"
-                                                Command="{Binding $parent[ListBox].((vm:ContactManagerViewModel)DataContext).DeleteContactCommand}"
-                                                CommandParameter="{Binding}"
-                                                Content="🗑️"
+                                        <StackPanel Grid.Column="0">
+                                            <TextBlock
+                                                Classes="primary"
                                                 FontSize="16"
-                                                Foreground="Red" />
-                                        </Grid>
+                                                FontWeight="Bold"
+                                                Text="{Binding Name}" />
+                                            <TextBlock
+                                                Classes="accent"
+                                                FontSize="13"
+                                                Margin="0,3,0,0"
+                                                Text="{Binding Email}" />
+                                            <TextBlock
+                                                Classes="success"
+                                                FontSize="13"
+                                                Margin="0,2,0,0"
+                                                Text="{Binding Phone}" />
+                                        </StackPanel>
+
+                                        <Button
+                                            Classes="delete-btn"
+                                            Command="{Binding $parent[ListBox].((vm:ContactManagerViewModel)DataContext).DeleteContactCommand}"
+                                            CommandParameter="{Binding}"
+                                            Content="🗑️"
+                                            FontSize="18"
+                                            Grid.Column="1"
+                                            Height="35"
+                                            VerticalAlignment="Center"
+                                            Width="35" />
                                     </Grid>
                                 </Border>
                             </DataTemplate>
@@ -91,88 +276,93 @@
                 </Grid>
             </Border>
 
+            <!--  Add Contact Form Panel  -->
             <Border
-                BorderBrush="Gray"
-                BorderThickness="1"
-                CornerRadius="5"
+                Classes="glass-card"
                 Grid.Column="1"
-                Margin="10,0,0,0"
-                Padding="20">
-                <ScrollViewer VerticalScrollBarVisibility="Visible">
-                    <StackPanel>
+                Margin="20,0,0,0"
+                Padding="25">
+                <ScrollViewer Padding="0,0,10,0" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Spacing="20">
+
                         <TextBlock
-                            FontSize="18"
-                            FontWeight="SemiBold"
+                            Classes="title"
+                            FontSize="20"
                             HorizontalAlignment="Center"
-                            Margin="0,0,0,20"
-                            Text="Add New Contact" />
-                        <TextBlock
-                            FontWeight="SemiBold"
-                            Margin="0,0,0,5"
-                            Text="Name" />
-                        <TextBox
-                            Margin="0,0,0,15"
-                            Text="{Binding NewName}"
-                            Watermark="Enter full name" />
-                        <TextBlock
-                            FontWeight="SemiBold"
-                            Margin="0,0,0,5"
-                            Text="Email" />
-                        <TextBox
-                            Margin="0,0,0,15"
-                            Text="{Binding NewEmail}"
-                            Watermark="Enter email address" />
-                        <TextBlock
-                            FontWeight="SemiBold"
-                            Margin="0,0,0,5"
-                            Text="Phone" />
-                        <TextBox
-                            Margin="0,0,0,15"
-                            Text="{Binding NewPhone}"
-                            Watermark="Enter phone number" />
+                            Text="➕ Add New Contact" />
+
+                        <StackPanel Spacing="8">
+                            <TextBlock
+                                Classes="primary"
+                                FontWeight="SemiBold"
+                                Text="Full Name" />
+                            <TextBox Classes="modern-input" Text="{Binding NewName}" />
+                        </StackPanel>
+
+                        <StackPanel Spacing="8">
+                            <TextBlock
+                                Classes="primary"
+                                FontWeight="SemiBold"
+                                Text="Email Address" />
+                            <TextBox Classes="modern-input" Text="{Binding NewEmail}" />
+                        </StackPanel>
+
+                        <StackPanel Spacing="8">
+                            <TextBlock
+                                Classes="primary"
+                                FontWeight="SemiBold"
+                                Text="Phone Number" />
+                            <TextBox Classes="modern-input" Text="{Binding NewPhone}" />
+                        </StackPanel>
 
                         <Button
+                            Classes="primary-btn"
                             Command="{Binding AddContactCommand}"
-                            Content="Add Contact"
-                            FontSize="14"
-                            FontWeight="SemiBold"
+                            Content="✨ Add Contact"
+                            FontSize="16"
                             HorizontalAlignment="Stretch"
                             HorizontalContentAlignment="Center"
-                            Padding="0,10" />
+                            Margin="0,10,0,0"
+                            Padding="0,15" />
 
+                        <!--  Contact Count Info  -->
                         <Border
-                            Background="DimGray"
-                            CornerRadius="5"
-                            Margin="0,20,0,0"
-                            Padding="10">
-
-                            <TextBlock HorizontalAlignment="Center">
-                                <Run Text="Total Contacts: " />
-                                <Run FontWeight="Bold" Text="{Binding Contacts.Count}" />
-                            </TextBlock>
+                            Classes="info-panel"
+                            Margin="0,10,0,0"
+                            Padding="15">
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                <TextBlock Classes="secondary" Text="📊 Total Contacts: " />
+                                <TextBlock
+                                    Classes="success"
+                                    FontWeight="Bold"
+                                    Text="{Binding Contacts.Count}" />
+                            </StackPanel>
                         </Border>
 
+                        <!--  Selected Contact Info  -->
                         <Border
-                            Background="Gray"
-                            CornerRadius="5"
+                            Classes="selected-panel"
                             IsVisible="{Binding SelectedContact, Converter={x:Static ObjectConverters.IsNotNull}}"
-                            Margin="0,10,0,0"
-                            Padding="10">
-                            <StackPanel>
+                            Padding="15">
+                            <StackPanel Spacing="8">
                                 <TextBlock
+                                    Classes="accent"
                                     FontWeight="SemiBold"
-                                    Margin="0,0,0,5"
-                                    Text="Selected Contact:" />
-                                <TextBlock FontWeight="Bold" Text="{Binding SelectedContact.Name}" />
-                                <TextBlock Text="{Binding SelectedContact.Email}" />
-                                <TextBlock Text="{Binding SelectedContact.Phone}" />
+                                    HorizontalAlignment="Center"
+                                    Text="👤 Selected Contact" />
+                                <TextBlock
+                                    Classes="primary"
+                                    FontWeight="Bold"
+                                    Text="{Binding SelectedContact.Name}" />
+                                <TextBlock Classes="accent" Text="{Binding SelectedContact.Email}" />
+                                <TextBlock Classes="success" Text="{Binding SelectedContact.Phone}" />
                             </StackPanel>
                         </Border>
 
                     </StackPanel>
-
                 </ScrollViewer>
             </Border>
+
         </Grid>
 
     </Grid>
