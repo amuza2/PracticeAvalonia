@@ -13,9 +13,9 @@ public partial class UsersData : ViewModelBase
     // Users
     [ObservableProperty] private static ObservableCollection<User> _users = new ObservableCollection<User>()
     {
-        new User { Id = 1, Name = "John Doe", Email = "john@example.com", Department = "IT" },
-        new User { Id = 2, Name = "Jane Smith", Email = "jane@example.com", Department = "HR" },
-        new User { Id = 3, Name = "Bob Johnson", Email = "bob@example.com", Department = "Sales" }
+        new User { Id = 1, Name = "John Doe", Email = "john@example.com", Department = "IT", CreatedDate = DateTimeOffset.Now.AddMonths(-10)},
+        new User { Id = 2, Name = "Jane Smith", Email = "jane@example.com", Department = "HR" , CreatedDate = DateTimeOffset.Now.AddMonths(-5)},
+        new User { Id = 3, Name = "Bob Johnson", Email = "bob@example.com", Department = "Sales", CreatedDate = DateTimeOffset.Now.AddMonths(-2)}
     };
     public static ObservableCollection<User> GetUsers() => _users;
     public static void UpdateUsers(User updateUser)

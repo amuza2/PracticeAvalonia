@@ -18,11 +18,11 @@
         <TextBlock
             FontSize="28"
             FontWeight="Bold"
-            Text="Welcome to Advanced Navigation Demo" />
+            Text="Navigating between views @CodingIsAmazing" />
 
         <TextBlock
             FontSize="14"
-            Text="This demo shows how to pass parameters between views in Avalonia MVVM applications."
+            Text="This demo shows how to navigate between pages and pass parameters between them in Avalonia MVVM applications."
             TextWrapping="Wrap" />
     </StackPanel>
 

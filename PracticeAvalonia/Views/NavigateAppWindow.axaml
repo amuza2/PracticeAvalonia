@@ -79,25 +79,7 @@
 
         <!--  Status Bar  -->
         <Border Grid.Row="2">
-            <Grid ColumnDefinitions="*,Auto,Auto">
-                <TextBlock
-                    Grid.Column="0"
-                    Text="{Binding CurrentViewModel, StringFormat='Current View: {0}'}"
-                    VerticalAlignment="Center" />
-
-                <TextBlock
-                    Grid.Column="1"
-                    Margin="20,0"
-                    Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='Last Updated: {0:HH:mm:ss}'}"
-                    VerticalAlignment="Center" />
-
-                <Border Classes="status-available" Grid.Column="2">
-                    <TextBlock
-                        Classes="accent"
-                        FontSize="10"
-                        Text="Ready" />
-                </Border>
-            </Grid>
+            <TextBlock Text="{Binding CurrentViewModel, StringFormat='Current View: {0}'}" VerticalAlignment="Center" />
         </Border>
     </Grid>
 

@@ -25,8 +25,6 @@
             Content="+ Add Product" />
 
         <Border Classes="main-card-inset">
-
-
             <DataGrid
                 AutoGenerateColumns="False"
                 GridLinesVisibility="All"
@@ -34,22 +32,10 @@
                 ItemsSource="{Binding Products}"
                 SelectedItem="{Binding SelectedProduct}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn
-                        Binding="{Binding Id}"
-                        Header="ID"
-                        Width="60" />
-                    <DataGridTextColumn
-                        Binding="{Binding Name}"
-                        Header="Name"
-                        Width="150" />
-                    <DataGridTextColumn
-                        Binding="{Binding Price, StringFormat='${0:F2}'}"
-                        Header="Price"
-                        Width="100" />
-                    <DataGridTextColumn
-                        Binding="{Binding Category}"
-                        Header="Category"
-                        Width="120" />
+                    <DataGridTextColumn Binding="{Binding Id}" Header="ID" />
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" />
+                    <DataGridTextColumn Binding="{Binding Price, StringFormat='${0:F2}'}" Header="Price" />
+                    <DataGridTextColumn Binding="{Binding Category}" Header="Category" />
                     <DataGridTemplateColumn Header="Actions">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

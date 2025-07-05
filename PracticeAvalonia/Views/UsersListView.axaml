@@ -33,22 +33,10 @@
                 ItemsSource="{Binding Users}"
                 SelectedItem="{Binding SelectedUser}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn
-                        Binding="{Binding Id}"
-                        Header="ID"
-                        Width="60" />
-                    <DataGridTextColumn
-                        Binding="{Binding Name}"
-                        Header="Name"
-                        Width="150" />
-                    <DataGridTextColumn
-                        Binding="{Binding Email}"
-                        Header="Email"
-                        Width="200" />
-                    <DataGridTextColumn
-                        Binding="{Binding Department}"
-                        Header="Department"
-                        Width="120" />
+                    <DataGridTextColumn Binding="{Binding Id}" Header="ID" />
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Name" />
+                    <DataGridTextColumn Binding="{Binding Email}" Header="Email" />
+                    <DataGridTextColumn Binding="{Binding Department}" Header="Department" />
                     <DataGridTemplateColumn Header="Actions">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

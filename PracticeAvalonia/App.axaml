@@ -16,20 +16,6 @@
         <sty:FluentAvaloniaTheme />
         <StyleInclude Source="avares://FluentAvalonia.ProgressRing/Styling/Controls/ProgressRing.axaml" />
 
-        <Style Selector="Border.main-card">
-            <Setter Property="Background" Value="#E6E6E6" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="CornerRadius" Value="25" />
-            <Setter Property="Effect">
-                <DropShadowEffect
-                    BlurRadius="20"
-                    Color="#BEBEBE"
-                    OffsetX="8"
-                    OffsetY="8" />
-            </Setter>
-        </Style>
-
-        <!--  Inner Shadow Effect for Neumorphism  -->
         <Style Selector="Border.main-card-inset">
             <Setter Property="Background" Value="#E6E6E6" />
             <Setter Property="BorderThickness" Value="0" />
@@ -43,99 +29,11 @@
             </Setter>
         </Style>
 
-        <!--  Book Card Style - Neumorphism  -->
-        <Style Selector="Border.book-card">
-            <Setter Property="Background" Value="#E6E6E6" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="CornerRadius" Value="20" />
-            <Setter Property="Margin" Value="12" />
-            <Setter Property="Padding" Value="20" />
-            <Setter Property="Effect">
-                <DropShadowEffect
-                    BlurRadius="15"
-                    Color="#BEBEBE"
-                    OffsetX="6"
-                    OffsetY="6" />
-            </Setter>
-        </Style>
-
-        <Style Selector="Border.book-card:pointerover">
-            <Setter Property="Effect">
-                <DropShadowEffect
-                    BlurRadius="18"
-                    Color="#BEBEBE"
-                    OffsetX="8"
-                    OffsetY="8" />
-            </Setter>
-        </Style>
-
-        <!--  Stats Card Style - Neumorphism  -->
-        <Style Selector="Border.stats-card">
-            <Setter Property="Background" Value="#E6E6E6" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="CornerRadius" Value="15" />
-            <Setter Property="Padding" Value="20" />
-            <Setter Property="Effect">
-                <DropShadowEffect
-                    BlurRadius="12"
-                    Color="#BEBEBE"
-                    OffsetX="4"
-                    OffsetY="4" />
-            </Setter>
-        </Style>
-
-        <!--  Search Box Style - Inset Neumorphism  -->
-        <Style Selector="Border.search-box">
-            <Setter Property="Background" Value="#E0E0E0" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="CornerRadius" Value="10" />
-            <Setter Property="Padding" Value="16,8" />
-            <Setter Property="Effect">
-                <DropShadowEffect
-                    BlurRadius="8"
-                    Color="#FFFFFF"
-                    OffsetX="-2"
-                    OffsetY="-2" />
-            </Setter>
-        </Style>
-
-        <!--  Book Cover Style - Neumorphism  -->
-        <Style Selector="Border.book-cover">
-            <Setter Property="CornerRadius" Value="8" />
-            <Setter Property="Width" Value="60" />
-            <Setter Property="Height" Value="80" />
-            <Setter Property="Effect">
-                <DropShadowEffect
-                    BlurRadius="8"
-                    Color="#BEBEBE"
-                    OffsetX="3"
-                    OffsetY="3" />
-            </Setter>
-        </Style>
-
-        <!--  Text Styles - Monochromatic  -->
-        <Style Selector="TextBlock.primary">
-            <Setter Property="Foreground" Value="#2D2D2D" />
-            <Setter Property="FontWeight" Value="Medium" />
-        </Style>
-
-        <Style Selector="TextBlock.secondary">
-            <Setter Property="Foreground" Value="#6B6B6B" />
-            <Setter Property="FontWeight" Value="Light" />
-        </Style>
-
         <Style Selector="TextBlock.accent">
             <Setter Property="Foreground" Value="#4A4A4A" />
             <Setter Property="FontWeight" Value="SemiBold" />
         </Style>
 
-        <Style Selector="TextBlock.title">
-            <Setter Property="Foreground" Value="#2D2D2D" />
-            <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="FontSize" Value="16" />
-        </Style>
-
-        <!--  Button Styles - Neumorphism  -->
         <Style Selector="Button.action-btn">
             <Setter Property="Background" Value="#E6E6E6" />
             <Setter Property="Foreground" Value="#2D2D2D" />
@@ -202,7 +100,6 @@
             </Setter>
         </Style>
 
-        <!--  Status Badge Styles - Neumorphism  -->
         <Style Selector="Border.status-available">
             <Setter Property="Background" Value="#E6E6E6" />
             <Setter Property="CornerRadius" Value="12" />
@@ -216,52 +113,6 @@
             </Setter>
         </Style>
 
-        <Style Selector="Border.status-borrowed">
-            <Setter Property="Background" Value="#E6E6E6" />
-            <Setter Property="CornerRadius" Value="12" />
-            <Setter Property="Padding" Value="8,4" />
-            <Setter Property="Effect">
-                <DropShadowEffect
-                    BlurRadius="6"
-                    Color="#BEBEBE"
-                    OffsetX="2"
-                    OffsetY="2" />
-            </Setter>
-        </Style>
-
-        <Style Selector="Border.status-reserved">
-            <Setter Property="Background" Value="#E6E6E6" />
-            <Setter Property="CornerRadius" Value="12" />
-            <Setter Property="Padding" Value="8,4" />
-            <Setter Property="Effect">
-                <DropShadowEffect
-                    BlurRadius="6"
-                    Color="#BEBEBE"
-                    OffsetX="2"
-                    OffsetY="2" />
-            </Setter>
-        </Style>
-
-        <!--  TextBox Style - Inset Neumorphism  -->
-        <Style Selector="TextBox.search-input">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Foreground" Value="#2D2D2D" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="FontSize" Value="14" />
-        </Style>
-
-        <!--  Highlight Effect for Top Light Source  -->
-        <Style Selector="Border.highlight">
-            <Setter Property="Effect">
-                <DropShadowEffect
-                    BlurRadius="10"
-                    Color="#FFFFFF"
-                    OffsetX="-3"
-                    OffsetY="-3" />
-            </Setter>
-        </Style>
-
-        <!--  Form Input Styles - Neumorphism  -->
         <Style Selector="TextBox">
             <Setter Property="Background" Value="#E0E0E0" />
             <Setter Property="Foreground" Value="#2D2D2D" />
@@ -295,30 +146,7 @@
             <Setter Property="Foreground" Value="#2D2D2D" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="CornerRadius" Value="12" />
-            <Setter Property="Padding" Value="15,10" />
-            <Setter Property="Effect">
-                <DropShadowEffect
-                    BlurRadius="8"
-                    Color="#FFFFFF"
-                    OffsetX="-2"
-                    OffsetY="-2" />
-            </Setter>
-        </Style>
 
-        <!--  ComboBox Styles  -->
-        <Style Selector="ComboBox">
-            <Setter Property="Background" Value="#E0E0E0" />
-            <Setter Property="Foreground" Value="#2D2D2D" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="CornerRadius" Value="12" />
-            <Setter Property="Padding" Value="15,10" />
-            <Setter Property="Effect">
-                <DropShadowEffect
-                    BlurRadius="8"
-                    Color="#FFFFFF"
-                    OffsetX="-2"
-                    OffsetY="-2" />
-            </Setter>
         </Style>
 
         <!--  Label Styles  -->
@@ -327,44 +155,6 @@
             <Setter Property="FontWeight" Value="Medium" />
             <Setter Property="FontSize" Value="14" />
         </Style>
-
-        <!--  Custom DataGrid styles to match light design  -->
-        <!-- <Style Selector="DataGrid"> -->
-        <!--     <Setter Property="Background" Value="#E6E6E6" /> -->
-        <!--     <Setter Property="BorderThickness" Value="0" /> -->
-        <!--     <Setter Property="CornerRadius" Value="15" /> -->
-        <!--     <Setter Property="GridLinesVisibility" Value="None" /> -->
-        <!--     <Setter Property="HeadersVisibility" Value="Column" /> -->
-        <!--     <Setter Property="RowBackground" Value="Transparent" /> -->
-        <!--     <Setter Property="SelectionMode" Value="Extended" /> -->
-        <!-- </Style> -->
-
-        <!-- <Style Selector="DataGridRow"> -->
-        <!--     <Setter Property="Background" Value="Transparent" /> -->
-        <!--     <Setter Property="Margin" Value="2" /> -->
-        <!--     <Setter Property="CornerRadius" Value="8" /> -->
-        <!-- </Style> -->
-
-        <!-- <Style Selector="DataGridRow:selected"> -->
-        <!--     <Setter Property="Background" Value="Transparent" /> -->
-        <!--     <Setter Property="Foreground" Value="#2D2D2D" /> -->
-        <!-- </Style> -->
-        <!--    -->
-        <!-- <Style Selector="DataGridRow:pointerover"> -->
-        <!--     <Setter Property="Background" Value="#DADADA" /> -->
-        <!-- </Style> -->
-
-        <!-- <Style Selector="DataGridCell"> -->
-        <!--     <Setter Property="Background" Value="Transparent" /> -->
-        <!--     <Setter Property="BorderThickness" Value="0" /> -->
-        <!--     <Setter Property="Padding" Value="12,8" /> -->
-        <!--     <Setter Property="Foreground" Value="#2D2D2D" /> -->
-        <!-- </Style> -->
-
-        <!-- <Style Selector="DataGridCell:selected"> -->
-        <!--     <Setter Property="Background" Value="Transparent" /> -->
-        <!--     <Setter Property="Foreground" Value="#2D2D2D" /> -->
-        <!-- </Style> -->
 
         <Style Selector="DataGridColumnHeader">
             <Setter Property="Background" Value="#E6E6E6" />
