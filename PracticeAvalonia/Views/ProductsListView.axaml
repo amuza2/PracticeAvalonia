@@ -1,0 +1,85 @@
+<UserControl
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="PracticeAvalonia.Views.ProductsListView"
+    x:DataType="vm:ProductsListViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:PracticeAvalonia.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.DataContext>
+        <vm:ProductsListViewModel />
+    </Design.DataContext>
+
+    <StackPanel Margin="20" Spacing="15">
+        <TextBlock
+            FontSize="24"
+            FontWeight="Bold"
+            Text="Products List" />
+        <Button
+            Classes="filter-btn"
+            Command="{Binding AddProductCommand}"
+            Content="+ Add Product" />
+
+        <Border Classes="main-card-inset">
+
+
+            <DataGrid
+                AutoGenerateColumns="False"
+                GridLinesVisibility="All"
+                IsReadOnly="True"
+                ItemsSource="{Binding Products}"
+                SelectedItem="{Binding SelectedProduct}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Binding="{Binding Id}"
+                        Header="ID"
+                        Width="60" />
+                    <DataGridTextColumn
+                        Binding="{Binding Name}"
+                        Header="Name"
+                        Width="150" />
+                    <DataGridTextColumn
+                        Binding="{Binding Price, StringFormat='${0:F2}'}"
+                        Header="Price"
+                        Width="100" />
+                    <DataGridTextColumn
+                        Binding="{Binding Category}"
+                        Header="Category"
+                        Width="120" />
+                    <DataGridTemplateColumn Header="Actions">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel
+                                    Margin="5"
+                                    Orientation="Horizontal"
+                                    Spacing="10">
+                                    <Button
+                                        Classes="filter-btn"
+                                        Command="{Binding $parent[UserControl].((vm:ProductsListViewModel)DataContext).ViewProductDetailsCommand}"
+                                        CommandParameter="{Binding}"
+                                        Content="View" />
+                                    <Button
+                                        Classes="filter-btn"
+                                        Command="{Binding $parent[UserControl].((vm:ProductsListViewModel)DataContext).EditProductCommand}"
+                                        CommandParameter="{Binding}"
+                                        Content="Edit" />
+                                    <Button
+                                        Classes="filter-btn"
+                                        Command="{Binding $parent[UserControl].((vm:ProductsListViewModel)DataContext).DeleteProductCommand}"
+                                        CommandParameter="{Binding}"
+                                        Content="Delete" />
+                                </StackPanel>
+
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </StackPanel>
+
+</UserControl>

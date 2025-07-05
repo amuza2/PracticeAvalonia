@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection.Metadata;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PracticeAvalonia.Models;
@@ -13,9 +14,10 @@ public partial class ContactManagerViewModel : ViewModelBase
     [ObservableProperty] [NotifyCanExecuteChangedFor(nameof(AddContactCommand))] private string _newName = string.Empty;
     [ObservableProperty] [NotifyCanExecuteChangedFor(nameof(AddContactCommand))] private string _newEmail = string.Empty;
     [ObservableProperty] [NotifyCanExecuteChangedFor(nameof(AddContactCommand))] private string _newPhone = string.Empty;
-    [ObservableProperty] private string _searchText = string.Empty;
-    [ObservableProperty] private ObservableCollection<Contact> _contacts = new();
+    [ObservableProperty] [NotifyPropertyChangedFor(nameof(FilteredContacts))] private string _searchText = string.Empty;
     [ObservableProperty] private Contact? _selectedContact;
+    
+    [ObservableProperty] private ObservableCollection<Contact> _contacts = new();
 
     public IEnumerable<Contact> FilteredContacts =>
         string.IsNullOrWhiteSpace(SearchText)
@@ -36,32 +38,6 @@ public partial class ContactManagerViewModel : ViewModelBase
         Contacts.Add(new Contact { Name = "Charlie Wilson", Email = "charlie.wilson@email.com", Phone = "555-0654" });
     }
 
-    [RelayCommand]
-    private void DeleteContact(Contact contact)
-    {
-        if(SelectedContact == contact) SelectedContact = null;
-        Contacts.Remove(contact);
-        OnPropertyChanged(nameof(FilteredContacts));
-    }
-
-    partial void OnSearchTextChanged(string value)
-    {
-        OnPropertyChanged(nameof(FilteredContacts));
-    }
-
-    // partial void OnNewNameChanged(string value)
-    // {
-    //     AddContactCommand.NotifyCanExecuteChanged();
-    // }
-    // partial void OnNewEmailChanged(string value)
-    // {
-    //     AddContactCommand.NotifyCanExecuteChanged();
-    // }
-    // partial void OnNewPhoneChanged(string value)
-    // {
-    //     AddContactCommand.NotifyCanExecuteChanged();
-    // }
-    
     [RelayCommand(CanExecute = nameof(CanAddContact))]
     private void AddContact()
     {
@@ -79,7 +55,7 @@ public partial class ContactManagerViewModel : ViewModelBase
     {
         return !string.IsNullOrWhiteSpace(NewName) &&
                !string.IsNullOrWhiteSpace(NewPhone) &&
-        IsValidEmail(NewEmail);
+               IsValidEmail(NewEmail);
     }
 
     private bool IsValidEmail(string newEmail)
@@ -94,4 +70,31 @@ public partial class ContactManagerViewModel : ViewModelBase
             return false;
         }
     }
+
+    // partial void OnNewNameChanged(string value)
+    // {
+    //     AddContactCommand.NotifyCanExecuteChanged();
+    // }
+    // partial void OnNewPhoneChanged(string value)
+    // {
+    //     AddContactCommand.NotifyCanExecuteChanged();
+    // }
+    // partial void OnNewEmailChanged(string value)
+    // {
+    //     AddContactCommand.NotifyCanExecuteChanged();
+    // }
+
+    [RelayCommand]
+    private void DeleteContact(Contact contact)
+    {
+        Contacts.Remove(contact);
+        if (SelectedContact == contact) SelectedContact = null;
+        OnPropertyChanged(nameof(FilteredContacts));
+    }
+
+    // partial void OnSearchTextChanged(string text)
+    // {
+    //     OnPropertyChanged(nameof(FilteredContacts));
+    // }
+    
 }

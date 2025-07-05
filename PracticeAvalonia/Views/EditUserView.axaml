@@ -1,0 +1,257 @@
+<UserControl
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="PracticeAvalonia.Views.EditUserView"
+    x:DataType="vm:EditUserViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="using:FluentAvalonia.UI.Controls"
+    xmlns:vm="using:PracticeAvalonia.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Design.DataContext>
+        <vm:EditUserViewModel />
+    </Design.DataContext>
+
+    <!-- <ScrollViewer> -->
+    <!--     <StackPanel Margin="20" Spacing="20"> -->
+    <!--         <StackPanel Orientation="Horizontal" Spacing="10"> -->
+    <!--  <Button  -->
+    <!--  Classes="filter-btn"  -->
+    <!--  Command="{Binding CancelCommand}"  -->
+    <!--  Content="← Cancel" />  -->
+    <!--  <TextBlock  -->
+    <!--  FontSize="24"  -->
+    <!--  FontWeight="Bold"  -->
+    <!--  Text="Edit User"  -->
+    <!--  VerticalAlignment="Center" />  -->
+    <!--         </StackPanel> -->
+    <!--    -->
+    <!--         <Border Padding="20"> -->
+    <!--  <Grid  -->
+    <!--  ColumnDefinitions="Auto,*"  -->
+    <!--  ColumnSpacing="15"  -->
+    <!--  RowDefinitions="Auto,Auto,Auto,Auto, Auto"  -->
+    <!--  RowSpacing="15">  -->
+    <!--    -->
+    <!--  <TextBlock  -->
+    <!--  FontWeight="SemiBold"  -->
+    <!--  Grid.Column="0"  -->
+    <!--  Grid.Row="0"  -->
+    <!--  Text="Name:"  -->
+    <!--  VerticalAlignment="Center" />  -->
+    <!--  <TextBox  -->
+    <!--  Grid.Column="1"  -->
+    <!--  Grid.Row="0"  -->
+    <!--  Text="{Binding Name}"  -->
+    <!--  Watermark="Enter user name" />  -->
+    <!--    -->
+    <!--  <TextBlock  -->
+    <!--  FontWeight="SemiBold"  -->
+    <!--  Grid.Column="0"  -->
+    <!--  Grid.Row="1"  -->
+    <!--  Text="Email:"  -->
+    <!--  VerticalAlignment="Center" />  -->
+    <!--  <TextBox  -->
+    <!--  Grid.Column="1"  -->
+    <!--  Grid.Row="1"  -->
+    <!--  Text="{Binding Email}"  -->
+    <!--  Watermark="Enter email address" />  -->
+    <!--    -->
+    <!--  <TextBlock  -->
+    <!--  FontWeight="SemiBold"  -->
+    <!--  Grid.Column="0"  -->
+    <!--  Grid.Row="2"  -->
+    <!--  Text="Department:"  -->
+    <!--  VerticalAlignment="Center" />  -->
+    <!--    -->
+    <!--  <TextBox  -->
+    <!--  Grid.Column="1"  -->
+    <!--  Grid.Row="2"  -->
+    <!--  Text="{Binding Department}"  -->
+    <!--  Watermark="Enter department" />  -->
+    <!--    -->
+    <!--  <TextBlock  -->
+    <!--  FontWeight="SemiBold"  -->
+    <!--  Grid.Column="0"  -->
+    <!--  Grid.Row="3"  -->
+    <!--  Text="Created Date:"  -->
+    <!--  VerticalAlignment="Center" />  -->
+    <!--  ~1~  date picker  @1@  -->
+    <!--  <DatePicker  -->
+    <!--  Grid.Column="1"  -->
+    <!--  Grid.Row="3"  -->
+    <!--  SelectedDate="{Binding CreatedDate}" />  -->
+    <!--    -->
+    <!--  <StackPanel  -->
+    <!--  Grid.Column="1"  -->
+    <!--  Grid.Row="4"  -->
+    <!--  Orientation="Horizontal"  -->
+    <!--  Spacing="10">  -->
+    <!--  <Button  -->
+    <!--  Classes="filter-btn"  -->
+    <!--  Command="{Binding SaveUserCommand}"  -->
+    <!--  Content="Save Changes"  -->
+    <!--  IsEnabled="{Binding !IsSaving}" />  -->
+    <!--  <Button  -->
+    <!--  Classes="filter-btn"  -->
+    <!--  Command="{Binding CancelCommand}"  -->
+    <!--  Content="Cancel"  -->
+    <!--  IsEnabled="{Binding !IsSaving}" />  -->
+    <!--  ~1~  Loading State  @1@  -->
+    <!--  <StackPanel  -->
+    <!--  HorizontalAlignment="Center"  -->
+    <!--  IsVisible="{Binding IsSaving}"  -->
+    <!--  VerticalAlignment="Center">  -->
+    <!--                         <StackPanel> -->
+    <!--                             <Border Padding="20"> -->
+    <!--  <ui:ProgressRing  -->
+    <!--  BorderThickness="10"  -->
+    <!--  Height="100"  -->
+    <!--  IsIndeterminate="True"  -->
+    <!--  Width="100" />  -->
+    <!--                             </Border> -->
+    <!--                         </StackPanel> -->
+    <!--    -->
+    <!--  <TextBlock  -->
+    <!--  HorizontalAlignment="Center"  -->
+    <!--  Margin="0,10"  -->
+    <!--  Text="Loading user..." />  -->
+    <!--                     </StackPanel> -->
+    <!--  <TextBlock  -->
+    <!--  IsVisible="{Binding IsSaving}"  -->
+    <!--  Text="Saving..."  -->
+    <!--  VerticalAlignment="Center" />  -->
+    <!--                 </StackPanel> -->
+    <!--             </Grid> -->
+    <!--         </Border> -->
+    <!--     </StackPanel> -->
+    <!-- </ScrollViewer> -->
+
+    <ScrollViewer>
+        <StackPanel Margin="20" Spacing="25">
+            <!--  Header Section  -->
+
+            <StackPanel Spacing="15">
+                <StackPanel Orientation="Horizontal" Spacing="15">
+                    <Button
+                        Classes="action-btn"
+                        Command="{Binding CancelCommand}"
+                        Content="← Back" />
+                    <TextBlock
+                        Classes="title"
+                        FontSize="24"
+                        FontWeight="Bold"
+                        Text="Edit User Profile"
+                        VerticalAlignment="Center" />
+                </StackPanel>
+            </StackPanel>
+
+
+            <!--  Main Form Section  -->
+            <Border Padding="20">
+                <Grid
+                    ColumnDefinitions="Auto,*"
+                    ColumnSpacing="15"
+                    RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                    RowSpacing="15">
+
+                    <!--  Name Field  -->
+                    <TextBlock
+                        FontWeight="SemiBold"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Name:"
+                        VerticalAlignment="Center" />
+                    <Border Grid.Column="1" Grid.Row="0">
+                        <TextBox Text="{Binding Name}" Watermark="Enter user's full name" />
+                    </Border>
+
+                    <!--  Email Field  -->
+                    <TextBlock
+                        FontWeight="SemiBold"
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="Email:"
+                        VerticalAlignment="Center" />
+                    <Border Grid.Column="1" Grid.Row="1">
+                        <TextBox Text="{Binding Email}" Watermark="user@example.com" />
+                    </Border>
+
+                    <!--  Department Field  -->
+                    <TextBlock
+                        FontWeight="SemiBold"
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Text="Department"
+                        VerticalAlignment="Center" />
+                    <Border Grid.Column="1" Grid.Row="2">
+                        <TextBox Text="{Binding Department}" Watermark="Enter department name" />
+                    </Border>
+
+                    <!--  Created Date Field  -->
+                    <TextBlock
+                        FontWeight="SemiBold"
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        Text="Created Date:"
+                        VerticalAlignment="Center" />
+                    <Border Grid.Column="1" Grid.Row="3">
+                        <DatePicker SelectedDate="{Binding CreatedDate}" />
+                    </Border>
+
+                    <!--  Action Buttons  -->
+                    <Grid
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="4"
+                        Margin="0,20,0,0">
+                        <StackPanel
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal"
+                            Spacing="15">
+                            <Button
+                                Classes="filter-btn"
+                                Command="{Binding SaveUserCommand}"
+                                Content="Save Changes"
+                                IsEnabled="{Binding !IsSaving}" />
+                            <Button
+                                Classes="filter-btn"
+                                Command="{Binding CancelCommand}"
+                                Content="Cancel"
+                                IsEnabled="{Binding !IsSaving}" />
+                        </StackPanel>
+                    </Grid>
+
+                    <!--  Loading State  -->
+                    <Border
+                        Classes="stats-card"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="5"
+                        IsVisible="{Binding IsSaving}"
+                        Margin="0,20,0,0">
+                        <StackPanel
+                            HorizontalAlignment="Center"
+                            Orientation="Horizontal"
+                            Spacing="20">
+                            <ui:ProgressRing
+                                BorderThickness="4"
+                                Height="40"
+                                IsIndeterminate="True"
+                                Width="40" />
+                            <TextBlock
+                                Classes="accent"
+                                FontSize="16"
+                                Text="Saving user information..."
+                                VerticalAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+
+</UserControl>

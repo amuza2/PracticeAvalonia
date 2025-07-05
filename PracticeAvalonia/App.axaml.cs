@@ -23,9 +23,9 @@ public partial class App : Application
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
             // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
             DisableAvaloniaDataAnnotationValidation();
-            desktop.MainWindow = new ContactManagerWindow()
+            desktop.MainWindow = new NavigateAppWindow()
             {
-                DataContext = new ContactManagerViewModel(),
+                DataContext = new NavigationAppViewModel(),
             };
         }
 
