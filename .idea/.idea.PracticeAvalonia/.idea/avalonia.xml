@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="PracticeAvalonia/App.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/AddProductView.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/AddUserView.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/ContactManagerWindow.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/CounterWindow.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/EditProductView.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/EditUserView.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/HomeView.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/HomeWindow.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/HomeWindowWindow.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/LoginWindow.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/MainWindow.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/NavigateAppWindow.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/ProductDetailsView.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/ProductsListView.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/SettingsView.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/SettingsWindow.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/TaskWindow.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/UIStyleTesting.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/UserProfileView.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/UsersListView.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+        <entry key="PracticeAvalonia/Views/loginView.axaml" value="PracticeAvalonia/PracticeAvalonia.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
